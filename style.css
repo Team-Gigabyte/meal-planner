@@ -1,16 +1,35 @@
-body, button {
+body,
+button {
     font-family: Helvetica, Arial, sans-serif;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
 }
 
 button {
     padding: .5rem;
 }
 
-nav {
-    margin: 1rem;
+nav,
+footer {
+    padding: 1rem;
+    box-sizing: border-box;
+    background-color: rgb(250, 250, 250);
+    a:link, a:visited {
+        text-decoration: none;
+        color: rgb(62, 62, 62);
+    }
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     font-family: "DM Serif Display", Georgia, 'Times New Roman', Times, serif;
 }
 
@@ -18,13 +37,19 @@ h1, h2, h3, h4, h5, h6 {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: rgb(255, 192, 171);
+    background-color: lightblue;
     height: 90vh;
     width: 100%;
+
     h1 {
-        font-size: 5rem;
+        font-size: 5em;
         text-align: center;
+
+        @media screen and (max-width: 600px) {
+            font-size: 3em;
+        }
     }
+
     button {
         font-size: 2rem;
     }
