@@ -18,7 +18,9 @@ footer {
     padding: 1rem;
     box-sizing: border-box;
     background-color: rgb(250, 250, 250);
-    a:link, a:visited {
+
+    a:link,
+    a:visited {
         text-decoration: none;
         color: rgb(62, 62, 62);
     }

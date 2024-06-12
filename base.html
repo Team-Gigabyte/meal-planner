@@ -4,7 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% if title %}
     <title>{{title}} — {{app_name}}</title>
+    {% else %}
+    <title>{{app_name}}</title>
+    {% endif %}
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="style.css">
@@ -15,11 +19,15 @@
     <nav>
         <a href="/"><b>{{app_name}}</b></a>
     </nav>
-    {% block content %}{% endblock %}
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
 
     <footer>
         <a href="https://team-gigabyte.github.io">
-            <img src="https://team-gigabyte.github.io/TG_Logo.svg" width="54" alt="A Team Gigabyte Project" title="A Team Gigabyte Project">
+            <img src="https://team-gigabyte.github.io/TG_Logo.svg" width="54" alt="A Team Gigabyte Project"
+                title="A Team Gigabyte Project">
         </a>
     </footer>
 </body>
