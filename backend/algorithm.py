@@ -36,8 +36,8 @@ class NutritionFacts:
         total_calories = sum(meal.calories for meal in meals)
         total_saturated_fat = sum(meal.saturated_fat for meal in meals)
         total_trans_fat = sum(meal.trans_fat for meal in meals)
-        total_cholesterol = sum()meal.cahocholesterol for meal in meals
-        total_sodium = sum()meal.sodium for meal in meals
-        total_carbs = sum()meal.carbs for meal in meals
-        total_sugar = sum()meal.sugar for meal in meals
+        total_cholesterol = sum(meal.cholesterol for meal in meals)
+        total_sodium = sum(meal.sodium for meal in meals)
+        total_carbs = sum(meal.carbs for meal in meals)
+        total_sugar = sum(meal.sugar for meal in meals)
  

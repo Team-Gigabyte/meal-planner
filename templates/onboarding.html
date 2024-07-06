@@ -8,7 +8,7 @@
     {% for field in [form.diet_checkboxes, form.restriction_checkboxes] %}
     <p>
         {{ field.label }}<br>
-        {{ field(size=32) }}<br>
+        {{ field() }}<br>
         {% for error in field.errors %}
         <span style="color: red;">[{{ error }}]</span>
         {% endfor %}

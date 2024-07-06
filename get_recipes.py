@@ -1,7 +1,8 @@
 import requests
 import os
 
-def get_recipes(diets, restrictions): # using edamam recipe search API
+
+def get_recipes(diets, restrictions):  # using edamam recipe search API
     endpoint = "https://api.edamam.com/api/recipes/v2"
     app_id = os.environ.get("EDAMAM_APP_ID")
     app_key = os.environ.get("EDAMAM_APP_KEY")
