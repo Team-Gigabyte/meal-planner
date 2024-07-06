@@ -2,7 +2,7 @@
 
 {% block content %}
 <h1>This Week's Plan</h1>
-<button aria-label="Print this meal plan" title="Print this meal plan">🖨︎</button>
+<button id="print-meal-plan" title="Print this meal plan">🖨︎</button>
 {% for day in meal_plan %}
 <h2>{{day.day}}</h2>
 <div class="mealrow">
@@ -12,8 +12,8 @@
         <span>{{meal.type}}</span> <!-- breakfast, lunch, dinner (style in all caps) -->
         <h3>{{meal.name}}</h3>
         <span>{{meal.calories}} cals • {{meal.prep_time}} mins prep</span>
-        <button aria-label="Replace this meal" title="Replace this meal">🗘</button>
-        <button aria-label="Save to favorites" title="Save to favorites">♥️</button>
+        <button id="replace-meal" title="Replace this meal">🗘</button>
+        <button id="save-favorites" title="Save to favorites">♥️</button>
     </div>
     {% endfor %}
 </div>

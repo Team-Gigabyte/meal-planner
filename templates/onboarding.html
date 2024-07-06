@@ -4,5 +4,16 @@
 <h1>Let's get started.</h1>
 <p>You can always change these preferences later.</p>
 <form action="" method="post"> <!-- add novalidate later to test server side validation -->
+    {{ form.hidden_tag() }}
+    {% for field in [form.diet_checkboxes, form.restriction_checkboxes] %}
+    <p>
+        {{ field.label }}<br>
+        {{ field(size=32) }}<br>
+        {% for error in field.errors %}
+        <span style="color: red;">[{{ error }}]</span>
+        {% endfor %}
+    </p>
+    {% endfor %}
+    <p>{{ form.submit() }}</p>
 </form>
 {% endblock %}

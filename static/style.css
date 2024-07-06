@@ -1,6 +1,7 @@
 body,
-button {
-    font-family: Helvetica, Arial, sans-serif;
+button,
+option {
+    font-family: Inter, Helvetica, Arial, sans-serif;
 }
 
 html,
@@ -59,5 +60,14 @@ h6 {
 }
 
 main.padded {
+    padding: 1rem;
+}
+
+select {
+    overflow-y: auto;
+}
+
+option {
+    font-size: 2rem;
     padding: 1rem;
 }
