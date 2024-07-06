@@ -20,7 +20,11 @@
         <a href="/"><b>{{app_name}}</b></a>
     </nav>
 
+    {% if no_padding %}
     <main>
+    {% else %}
+    <main class="padded">
+    {% endif %}
         {% block content %}{% endblock %}
     </main>
 

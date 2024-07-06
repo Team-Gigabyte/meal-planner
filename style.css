@@ -57,3 +57,7 @@ h6 {
         font-size: 2rem;
     }
 }
+
+main.padded {
+    padding: 1rem;
+}
