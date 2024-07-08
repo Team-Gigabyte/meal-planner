@@ -1,21 +1,27 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1>This Week's Plan</h1>
-<button id="print-meal-plan" title="Print this meal plan">🖨︎</button>
+<h1>This Week's Plan
+    <button id="print-meal-plan" title="Print this meal plan" onclick="window.print()">
+        🖨️ <b>Print</b>
+    </button>
+</h1>
 {% for day in meal_plan %}
-<h2>{{day.day}}</h2>
+<!-- <h2>{{day.day}}</h2> -->
 <div class="mealrow">
-    {% for meal in day.meals %}
+    {% for meal in [day['Breakfast'], day['Lunch'], day['Dinner']] %}
     <div class="mealcard">
-        <img src="{{meal.image_url}}" aria-hidden="true">
-        <span>{{meal.type}}</span> <!-- breakfast, lunch, dinner (style in all caps) -->
-        <h3>{{meal.name}}</h3>
-        <span>{{meal.calories}} cals • {{meal.prep_time}} mins prep</span>
+        <img src="{{meal.image}}" aria-hidden="true" height="100" width="100" class="meal-thumbnail">
+        <!-- <span>{{meal.type}}</span> breakfast, lunch, dinner (style in all caps) -->
+        <h3>{{meal.label}}
+            <a class="globe-icon" href="{{meal.shareAs}}" title="Open recipe (external website)">🌐︎</a>
+        </h3>
+        <span>{{meal.calories|round|int}} cals • 56 min prep time</span><br>
         <button id="replace-meal" title="Replace this meal">🗘</button>
         <button id="save-favorites" title="Save to favorites">♥️</button>
     </div>
     {% endfor %}
 </div>
+<hr>
 {% endfor %}
 {% endblock %}

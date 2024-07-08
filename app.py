@@ -43,5 +43,5 @@ def currentmealplan():
         "currentmealplan.html",
         title="Your Meal Plan",
         app_name=app_name,
-        recipes=plan
+        meal_plan=plan
     )

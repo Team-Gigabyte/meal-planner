@@ -71,3 +71,36 @@ option {
     font-size: 2rem;
     padding: 1rem;
 }
+
+.mealcard {
+    border: 1px solid #ccc;
+    padding: 1rem;
+    margin: 1rem;
+    width: 250px;
+    display: inline-block;
+    border-radius: 10px;
+    @media screen and (max-width: 675px){
+        width: 80%;
+    }
+}
+
+.meal-thumbnail {
+    border-radius: 10px;
+}
+
+.globe-icon {
+    text-decoration: none;
+    color: black;
+    font-weight: 900;
+    font-family: Inter, sans-serif;
+}
+
+.mealrow {
+    overflow-x: auto;
+    text-wrap-mode: wrap;
+}
+#print-meal-plan {
+    vertical-align: middle; /* Adjust the vertical alignment */
+    height: 100%;
+    margin: 0;
+}

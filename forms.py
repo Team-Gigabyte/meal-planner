@@ -8,35 +8,46 @@ class RegistrationForm(FlaskForm):
     diets = [
         "Vegetarian",
         "Vegan",
-        "Keto",
-        "Paleo",
-        "Gluten-Free",
-        "Dairy-Free",
-        "Low-Carb",
-        "Low-Fat",
-        "Low-Sodium",
-        "Mediterranean",
-        "Whole30",
+        "Keto Friendly",
+        "Kosher",
         "Pescatarian",
-        "Flexitarian",
+        "Paleo",
+        "Low Sugar",
+        "Low Potassium",
+        "Low Fat Abs",
+        "Kidney Friendly",
+        "Sugar Conscious",
+        "Immuno Supportive",
     ]
     dietary_restrictions = [
-        "Peanuts",
-        "Tree Nuts",
-        "Soy",
-        "Dairy",
-        "Eggs",
-        "Wheat",
-        "Fish",
-        "Shellfish",
-        "Other",
+        "Alcohol-Free",
+        "Celery-Free",
+        "Crustacean-Free",
+        "Dairy-Free",
+        "Egg-Free",
+        "Fish-Free",
+        "Fodmap-Free",
+        "Gluten-Free",
+        "Lupine-Free",
+        "Mollusk-Free",
+        "Mustard-Free",
+        "No Oil Added",
+        "Peanut-Free",
+        "Pork-Free",
+        "Red Meat Free",
+        "Sesame-Free",
+        "Shellfish-Free",
+        "Soy-Free",
+        "Sulfite-Free",
+        "Tree Nut Free",
+        "Wheat-Free",
     ]
     # username = StringField('Username', validators=[DataRequired()])
     # password = PasswordField('Password',validators=[DataRequired()])
     # password2 = PasswordField('Repeat Password', validators=[DataRequired(), EqualTo('password')])
     diet_checkboxes = SelectMultipleField("Special Diets", choices=diets)
     restriction_checkboxes = SelectMultipleField(
-        "Dietary Restrictions", choices=dietary_restrictions
+        "Excluded Ingredients", choices=dietary_restrictions
     )
 
     submit = SubmitField("Register")
