@@ -2,7 +2,7 @@ import os
 from flask import Flask, redirect, render_template, request, url_for
 from datetime import datetime
 from forms import RegistrationForm, SignInForm
-from get_recipes import get_recipes
+import recipes
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import UserMixin
 
@@ -38,10 +38,10 @@ def onboarding():
 def currentmealplan():
     diets = request.args.getlist("diets")
     restrictions = request.args.getlist("restrictions")
-    recipes = get_recipes(diets, restrictions)
+    plan = recipes.build_weekly_meal_plan(diets, restrictions)
     return render_template(
         "currentmealplan.html",
         title="Your Meal Plan",
         app_name=app_name,
-        recipes=recipes
+        recipes=plan
     )
