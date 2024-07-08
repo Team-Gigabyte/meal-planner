@@ -24,7 +24,6 @@ def index():
 def onboarding():
     form = RegistrationForm()
     if form.validate_on_submit():
-        print("form validated")
         diets = form.diet_checkboxes.data
         restrictions = form.restriction_checkboxes.data
         return redirect(
@@ -44,5 +43,5 @@ def currentmealplan():
         "currentmealplan.html",
         title="Your Meal Plan",
         app_name=app_name,
-        recipes=recipes,
+        recipes=recipes
     )
