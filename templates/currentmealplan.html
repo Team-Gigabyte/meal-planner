@@ -14,8 +14,10 @@
         <img src="{{meal.image}}" aria-hidden="true" height="100" width="100" class="meal-thumbnail">
         <!-- <span>{{meal.type}}</span> breakfast, lunch, dinner (style in all caps) -->
         <h3>{{meal.label}}
-            <a class="globe-icon" href="{{meal.shareAs}}" title="Open recipe (external website)">🌐︎</a>
+            <a class="globe-icon" href="{{meal.shareAs}}" title="Open recipe (external website)"
+                aria-label="Open recipe in external website">🌐︎</a>
         </h3>
+        <!--TODO: make screen readers read this correctly-->
         <span>{{meal.calories|round|int}} cals • 56 min prep time</span><br>
         <button id="replace-meal" title="Replace this meal">🗘</button>
         <button id="save-favorites" title="Save to favorites">♥️</button>
