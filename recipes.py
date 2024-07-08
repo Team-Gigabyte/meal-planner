@@ -33,5 +33,6 @@ def build_weekly_meal_plan(diets, restrictions):
             day_recipes[meal] = foundRecipes[meal][day]['recipe']
         plan.append(day_recipes)
     # print(plan)
+    print("Plan built")
     return plan
     

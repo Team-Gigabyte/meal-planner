@@ -1,5 +1,5 @@
 import os
-from flask import Flask, redirect, render_template, request, url_for
+from flask import Flask, redirect, render_template, url_for, session
 from datetime import datetime
 from forms import RegistrationForm, SignInForm
 import recipes
@@ -24,11 +24,11 @@ def index():
 def onboarding():
     form = RegistrationForm()
     if form.validate_on_submit():
-        diets = form.diet_checkboxes.data
-        restrictions = form.restriction_checkboxes.data
-        return redirect(
-            url_for("currentmealplan", diets=diets, restrictions=restrictions)
-        )
+        # diets = form.diet_checkboxes.data
+        # restrictions = form.restriction_checkboxes.data
+        session["diets"] = form.diet_checkboxes.data
+        session["restrictions"] = form.restriction_checkboxes.data
+        return redirect(url_for("currentmealplan"))
     return render_template(
         "onboarding.html", title="Get Started", form=form, app_name=app_name
     )
@@ -36,12 +36,15 @@ def onboarding():
 
 @app.route("/currentmealplan")
 def currentmealplan():
-    diets = request.args.getlist("diets")
-    restrictions = request.args.getlist("restrictions")
-    plan = recipes.build_weekly_meal_plan(diets, restrictions)
+    print("returning current meal plan")
+    # diets = request.args.getlist("diets")
+    # restrictions = request.args.getlist("restrictions")
+    plan = recipes.build_weekly_meal_plan(
+        session["diets"], session["restrictions"]
+    )
     return render_template(
         "currentmealplan.html",
         title="Your Meal Plan",
         app_name=app_name,
-        meal_plan=plan
+        meal_plan=plan,
     )
