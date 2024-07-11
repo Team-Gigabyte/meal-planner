@@ -11,6 +11,7 @@ def get_recipes(diets, restrictions, mealType = 'Lunch'):  # using edamam recipe
         query += f"&health={diet.lower().replace(' ', '-')}"
     for restriction in restrictions:
         query += f"&health={restriction.lower().replace(' ', '-')}"
+    query += "&glycemic-index=0-55" # does this work?
     print(endpoint + query)
     response = requests.get(endpoint + query)
     recipes = response.json()
