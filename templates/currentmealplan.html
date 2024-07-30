@@ -6,6 +6,7 @@
         🖨️ <b>Print</b>
     </button>
 </h1>
+<p><a href="">Sign up</a> to save this meal plan and your preferences.</p>
 {% for day in meal_plan %}
 <!-- <h2>{{day.day}}</h2> -->
 <div class="mealrow">
@@ -20,7 +21,7 @@
         <!--TODO: make screen readers read this correctly-->
         <span>{{meal.calories|round|int}} <abbr title="calories">cals</abbr> • 55 <abbr title="glycemic index">GI</abbr></span><br><br>
         <button id="replace-meal" title="Not interested">🚫️</button>
-        <button id="save-favorites" title="Save to favorites">♥️</button>
+        <button id="save-favorites" title="Save to favorites">❤️</button>
     </div>
     {% endfor %}
 </div>
