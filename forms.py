@@ -1,4 +1,3 @@
-from typing import NotRequired
 from flask_wtf import FlaskForm
 from wtforms.validators import DataRequired, EqualTo, Email
 from wtforms import SelectMultipleField, StringField, PasswordField, SubmitField
