@@ -1,11 +1,10 @@
 import requests
 import os
-
+endpoint = "https://api.edamam.com/api/recipes/v2"
+app_id = os.environ.get("EDAMAM_APP_ID")
+app_key = os.environ.get("EDAMAM_APP_KEY")
 
 def get_recipes(diets, restrictions, mealType = 'Lunch'):  # using edamam recipe search API
-    endpoint = "https://api.edamam.com/api/recipes/v2"
-    app_id = os.environ.get("EDAMAM_APP_ID")
-    app_key = os.environ.get("EDAMAM_APP_KEY")
     query = f"?type=public&random=true&app_id={app_id}&app_key={app_key}&mealType={mealType}"
     for diet in diets:
         query += f"&health={diet.lower().replace(' ', '-')}"
@@ -36,4 +35,14 @@ def build_weekly_meal_plan(diets, restrictions):
     # print(plan)
     print("Plan built")
     return plan
-    
+
+def uris_to_recipes(recipe_ids):
+    query = f"?type=public&app_id={app_id}&app_key={app_key}"
+    for recipe_id in recipe_ids:
+        if recipe_id != "placeholder":
+            query += f"&uri=http%3A%2F%2Fwww.edamam.com%2Fontologies%2Fedamam.owl%23recipe_{recipe_id}"
+    print(endpoint + "/by-uri" + query)
+    response = requests.get(endpoint + "/by-uri" + query)
+    recipes = response.json()
+    recipes = recipes['hits']
+    return recipes

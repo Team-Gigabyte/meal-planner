@@ -1,0 +1,14 @@
+{% macro mealcard(meal) %}
+<div class="mealcard">
+    <img src="{{meal.image}}" aria-hidden="true" height="100" width="100" class="meal-thumbnail">
+    <!-- <span>{{meal.type}}</span> breakfast, lunch, dinner (style in all caps) -->
+    <h3>{{meal.label}}
+        <a class="globe-icon" href="{{meal.shareAs}}" title="Open recipe (external website)"
+            aria-label="Open recipe in external website">🌐︎</a>
+    </h3>
+    <!--TODO: make screen readers read this correctly-->
+    <span>{{meal.calories|round|int}} <abbr title="calories">cals</abbr> • 55 <abbr title="glycemic index">GI</abbr></span><br><br>
+    <button id="replace-meal" title="Not interested">🚫️</button>
+    <button onclick="add_to_favorites(this, '{{meal.uri}}')" id="save-favorites" title="Save to favorites">❤️</button>
+</div>
+{% endmacro %}

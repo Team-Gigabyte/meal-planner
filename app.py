@@ -1,5 +1,5 @@
 import os
-from flask import Flask, redirect, render_template, url_for, session
+from flask import Flask, redirect, render_template, request, url_for, session
 from datetime import datetime
 from forms import RegistrationForm, SignInForm
 import recipes
@@ -36,6 +36,7 @@ def onboarding():
         session["diets"] = form.diet_checkboxes.data
         print(type(session["diets"]))
         session["restrictions"] = form.restriction_checkboxes.data
+        session["fave_recipes"] = ["placeholder"]
         return redirect(url_for("currentmealplan"))
     return render_template(
         "onboarding.html", title="Get Started", form=form, app_name=app_name
@@ -57,4 +58,41 @@ def currentmealplan():
         title="Your Meal Plan",
         app_name=app_name,
         meal_plan=plan,
+    )
+
+
+@app.route("/add_to_favorites", methods=["POST"])
+def add_to_favorites():
+    try:
+        uri = request.get_json()["uri"]
+        print(uri)
+        recipe_id = uri.split("recipe_")[1]
+        if recipe_id not in session["fave_recipes"]:
+            session["fave_recipes"] += [recipe_id]
+        return recipe_id
+    except Exception as e:
+        print(e)
+        return "Error adding recipe to favorites", 400
+
+@app.route("/remove_from_favorites", methods=["POST"])
+def remove_from_favorites():
+    try:
+        uri = request.get_json()["uri"]
+        recipe_id = uri.split("recipe_")[1]
+        session["fave_recipes"].remove(recipe_id)
+        return recipe_id
+    except Exception as e: 
+        print(e)
+        return "Error removing recipe from favorites", 400
+
+@app.route("/favorites")
+def favorites():
+    if not "fave_recipes" in session:
+        return redirect(url_for("onboarding"))
+    meals = recipes.uris_to_recipes(session["fave_recipes"])
+    return render_template(
+        "favorites.html",
+        title="Favorites",
+        app_name=app_name,
+        fave_meals=meals,
     )

@@ -53,6 +53,58 @@
                 return false;
             }
         })
+        async function add_to_favorites(button, uri) {
+            try {
+                const response = await fetch('/add_to_favorites', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        uri: uri
+                    })
+                })
+                if (response.ok) {
+                    button.title = "Remove from favorites"
+                    button.onclick = function() {
+                        remove_from_favorites(button, uri)
+                    }
+                    button.innerHTML = '💔'
+                } else {
+                    alert('Failed to add to favorites.')
+                }
+            } catch (error) {
+                console.error('Failed to add to favorites:', error)
+                alert('Failed to add to favorites.')
+            }
+            
+        }
+        async function remove_from_favorites(button, uri) {
+            try {
+                const response = await fetch('/remove_from_favorites', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        uri: uri
+                    })
+                })
+                if (response.ok) {
+                    button.title = "Save to favorites"
+                    button.onclick = function() {
+                        add_to_favorites(button, uri)
+                    }
+                    button.innerHTML = '❤️'
+                } else {
+                    alert('Failed to remove from favorites.')
+                }
+            } catch (error) {
+                console.error('Failed to remove from favorites:', error)
+                alert('Failed to remove from favorites.')
+            }
+            
+        }
     </script>
 </body>
 
