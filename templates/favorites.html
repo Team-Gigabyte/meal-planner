@@ -4,9 +4,8 @@
 {% block content %}
 <h1>Favorite Recipes</h1>
 <div class="mealrow">
-    {{fave_meals}}
-    {% for recipe in fave_meals %}
-    {{ meals.mealcard(recipe) }}
+    {% for fave in fave_meals %}
+    {{ meals.mealcard(fave.recipe) }}
     {% endfor %}
 </div>
 

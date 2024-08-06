@@ -69,6 +69,7 @@ def add_to_favorites():
         recipe_id = uri.split("recipe_")[1]
         if recipe_id not in session["fave_recipes"]:
             session["fave_recipes"] += [recipe_id]
+        print(recipe_id, session["fave_recipes"])
         return recipe_id
     except Exception as e:
         print(e)
@@ -79,7 +80,11 @@ def remove_from_favorites():
     try:
         uri = request.get_json()["uri"]
         recipe_id = uri.split("recipe_")[1]
-        session["fave_recipes"].remove(recipe_id)
+        print(recipe_id, session["fave_recipes"])
+        if recipe_id in session["fave_recipes"]:
+            session["fave_recipes"].remove(recipe_id)
+        print(recipe_id, session["fave_recipes"])
+    
         return recipe_id
     except Exception as e: 
         print(e)
@@ -89,6 +94,7 @@ def remove_from_favorites():
 def favorites():
     if not "fave_recipes" in session:
         return redirect(url_for("onboarding"))
+    print(session["fave_recipes"])
     meals = recipes.uris_to_recipes(session["fave_recipes"])
     return render_template(
         "favorites.html",
