@@ -18,16 +18,30 @@ button {
 nav,
 footer {
     padding: 1rem;
+    box-sizing: border-box;
     display: flex;
     justify-content: space-between;
-    box-sizing: border-box;
+    align-items: center;
     background-color: rgb(250, 250, 250);
+
+    div {
+        display: flex;
+        justify-content: flex-end;
+    }
 
     a:link,
     a:visited {
         text-decoration: none;
         color: rgb(62, 62, 62);
+        margin-left: 1rem;
+        margin-right: 1rem;
+
+        @media screen and (max-width: 500px) {
+            margin-left: .4rem;
+            margin-right: .4rem;
+        }
     }
+
     a:hover {
         text-decoration: underline;
     }
@@ -84,7 +98,8 @@ option {
     width: 250px;
     display: inline-block;
     border-radius: 10px;
-    @media screen and (max-width: 675px){
+
+    @media screen and (max-width: 675px) {
         width: 80%;
     }
 }
@@ -104,8 +119,10 @@ option {
     overflow-x: auto;
     text-wrap-mode: wrap;
 }
+
 #print-meal-plan {
-    vertical-align: middle; /* Adjust the vertical alignment */
+    vertical-align: middle;
+    /* Adjust the vertical alignment */
     height: 100%;
     margin: 0;
 }
