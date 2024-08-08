@@ -82,7 +82,11 @@ def remove_from_favorites():
         recipe_id = uri.split("recipe_")[1]
         print(recipe_id, session["fave_recipes"])
         if recipe_id in session["fave_recipes"]:
-            session["fave_recipes"].remove(recipe_id)
+            arr = session["fave_recipes"]
+            arr.remove(recipe_id)
+            session["fave_recipes"] = arr
+        else:
+            print("Recipe not in favorites")
         print(recipe_id, session["fave_recipes"])
     
         return recipe_id
@@ -95,6 +99,13 @@ def favorites():
     if not "fave_recipes" in session:
         return redirect(url_for("onboarding"))
     print(session["fave_recipes"])
+    if len(session["fave_recipes"]) <= 1:
+        return render_template(
+            "favorites.html",
+            title="Favorites",
+            app_name=app_name,
+            fave_meals=[],
+        )
     meals = recipes.uris_to_recipes(session["fave_recipes"])
     return render_template(
         "favorites.html",

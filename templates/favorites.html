@@ -4,9 +4,13 @@
 {% block content %}
 <h1>Favorite Recipes</h1>
 <div class="mealrow">
+    {% if fave_meals|length == 0 %}
+    <p>No favorites yet. Go back to your current meal plan to add more.</p>
+    {% else %}
     {% for fave in fave_meals %}
-    {{ meals.mealcard(fave.recipe) }}
+    {{ meals.mealcard(fave.recipe, is_fave=True) }}
     {% endfor %}
+    {% endif %}
 </div>
 
 {% endblock %}
