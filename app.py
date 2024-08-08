@@ -75,6 +75,7 @@ def add_to_favorites():
         print(e)
         return "Error adding recipe to favorites", 400
 
+
 @app.route("/remove_from_favorites", methods=["POST"])
 def remove_from_favorites():
     try:
@@ -88,11 +89,12 @@ def remove_from_favorites():
         else:
             print("Recipe not in favorites")
         print(recipe_id, session["fave_recipes"])
-    
+
         return recipe_id
-    except Exception as e: 
+    except Exception as e:
         print(e)
         return "Error removing recipe from favorites", 400
+
 
 @app.route("/favorites")
 def favorites():
