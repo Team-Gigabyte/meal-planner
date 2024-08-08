@@ -1,5 +1,6 @@
 body,
 button,
+input[type="submit"],
 option {
     font-family: Inter, Helvetica, Arial, sans-serif;
 }
@@ -11,7 +12,8 @@ body {
     font-size: 100%;
 }
 
-button {
+button,
+input[type="submit"] {
     padding: .5rem;
 }
 
@@ -79,7 +81,15 @@ h6 {
 }
 
 main.padded {
-    padding: 1rem;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+
+    @media screen and (max-width: 600px) {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
 }
 
 select {
@@ -125,4 +135,12 @@ option {
     /* Adjust the vertical alignment */
     height: 100%;
     margin: 0;
+}
+
+@media print {
+
+    #print-meal-plan,
+    nav a:not(.app-name) {
+        display: none;
+    }
 }

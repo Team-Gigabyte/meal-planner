@@ -49,7 +49,7 @@ class RegistrationForm(FlaskForm):
         "Excluded Ingredients", choices=dietary_restrictions
     )
 
-    submit = SubmitField("Register")
+    submit = SubmitField("Generate meal plan →")
 
 
 class SignInForm(FlaskForm):
