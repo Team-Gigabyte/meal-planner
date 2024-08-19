@@ -11,9 +11,9 @@ def get_recipes(
 ):  # using edamam recipe search API
     query = f"?type=public&random=true&app_id={app_id}&app_key={app_key}&mealType={mealType}"
     for diet in diets:
-        query += f"&health={diet.lower().replace(' ', '-')}"
+        query += f"&health={diet}"
     for restriction in restrictions:
-        query += f"&health={restriction.lower().replace(' ', '-')}"
+        query += f"&health={restriction}"
     query += "&glycemic-index=0-55"  # does this work?
     print(endpoint + query)
     response = requests.get(endpoint + query)
