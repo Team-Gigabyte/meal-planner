@@ -124,10 +124,11 @@ def favorites():
             app_name=app_name,
             fave_meals=[],
         )
-    meals = recipes.uris_to_recipes(session["fave_recipes"])
+    meals, ing = recipes.uris_to_recipes(session["fave_recipes"])
     return render_template(
         "favorites.html",
         title="Favorites",
         app_name=app_name,
         fave_meals=meals,
+        ingredients=ing,
     )

@@ -5,12 +5,23 @@
 <h1>Favorite Recipes</h1>
 <div class="mealrow">
     {% if fave_meals|length == 0 %}
-    <p>No favorites yet. Go back to your current meal plan to add more.</p>
+    <p>No favorites yet. Go back to your <a href="currentmealplan">current meal plan</a> to add more.</p>
     {% else %}
     {% for fave in fave_meals %}
     {{ meals.mealcard(fave.recipe, is_fave=True) }}
     {% endfor %}
     {% endif %}
 </div>
-
+{% if fave_meals|length > 0 %}
+<h2>Shopping List <button class="copier" data-copy="
+    {{ ingredients|join('\n') }}
+    ">Copy</button></h2>
+<p>
+<ul>
+    {% for ingredient in ingredients %}
+    <li>{{ ingredient }}</li>
+    {% endfor %}
+</ul>
+</p>
+{% endif %}
 {% endblock %}

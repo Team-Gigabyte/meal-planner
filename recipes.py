@@ -47,4 +47,16 @@ def uris_to_recipes(recipe_ids):
     response = requests.get(endpoint + "/by-uri" + query)
     recipes = response.json()
     recipes = recipes["hits"]
-    return recipes
+    ingredients = ingredient_list(recipes)
+    return recipes, ingredients
+
+def ingredient_list(recipes):
+    ingredients = []
+    for recipe in recipes:
+        for ingredient in recipe["recipe"]["ingredientLines"]:
+            ingToAdd = ingredient.strip()
+            if ingToAdd[0] == "*":
+                ingToAdd = ingToAdd[2:].strip()
+            ingredients.append(ingToAdd)
+        # ingredients += recipe["recipe"]["ingredientLines"]
+    return ingredients
