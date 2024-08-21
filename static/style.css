@@ -17,6 +17,12 @@ input[type="submit"] {
     padding: .5rem;
 }
 
+button:hover,
+input[type="submit"]:hover {
+    cursor: pointer;
+    filter: brightness(1.1);
+}
+
 nav,
 footer {
     padding: 1rem;

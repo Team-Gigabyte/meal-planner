@@ -2,7 +2,11 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1>Favorite Recipes</h1>
+<h1>Favorite Recipes
+{% if fave_meals|length > 0 %}
+<button onclick="clear_favorites()" id="clear-favorites">Clear all</button>
+{% endif %}
+</h1>
 <div class="mealrow">
     {% if fave_meals|length == 0 %}
     <p>No favorites yet. Go back to your <a href="currentmealplan">current meal plan</a> to add more.</p>

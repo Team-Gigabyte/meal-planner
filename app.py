@@ -47,6 +47,7 @@ def onboarding():
         # diets = form.diet_checkboxes.data
         # restrictions = form.restriction_checkboxes.data
         # session["diets"] = form.diet_checkboxes.data
+        session.permanent = True
         session["diets"] = [re.sub(emoji_regex, "", item).lower().strip().replace(' ', '-')
                                 for item in form.diet_checkboxes.data]
         print(session["diets"])
@@ -111,6 +112,14 @@ def remove_from_favorites():
         print(e)
         return "Error removing recipe from favorites", 400
 
+@app.route("/clear_favorites", methods=["POST"])
+def clear_favorites():
+    try:
+        session["fave_recipes"] = []
+        return "Favorites cleared"
+    except Exception as e:
+        print(e)
+        return "Error clearing favorites", 400
 
 @app.route("/favorites")
 def favorites():

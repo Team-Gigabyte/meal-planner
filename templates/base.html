@@ -22,6 +22,7 @@
         <div>
             <a href="/currentmealplan">View Meal Plan</a>
             <a href="/favorites">Favorites</a>
+            <a href="/onboarding">Preferences</a>
         </div>
     </nav>
 
@@ -123,6 +124,22 @@
                 alert('Failed to remove from favorites.')
             }
             
+        }
+        function clear_favorites() {
+            if (confirm('All favorites will be lost. Are you sure?')) {
+                fetch('/clear_favorites', {
+                    method: 'POST'
+                }).then(response => {
+                    if (response.ok) {
+                        window.location.reload()
+                    } else {
+                        alert('Failed to clear favorites.')
+                    }
+                }).catch(error => {
+                    console.error('Failed to clear favorites:', error)
+                    alert('Failed to clear favorites.')
+                })
+            }
         }
     </script>
 </body>

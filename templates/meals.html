@@ -7,12 +7,16 @@
             aria-label="Open recipe in external website">🌐︎</a>
     </h3>
     <!--TODO: make screen readers read this correctly-->
-    <span>{{meal.calories|round|int}} <abbr title="calories">cals</abbr> • 55 <abbr title="glycemic index">GI</abbr></span><br><br>
-    <button id="replace-meal" title="Not interested">🚫️</button>
+    <span>{{(meal.calories/meal.yield)|round|int}} <abbr title="calories per serving">cals/serv</abbr>
+        {% if meal.totalTime|round|int > 0 %}
+        • {{meal.totalTime|round|int}} mins</span>
+        {% endif %}
+        <br><br>
+    <!-- <button id="replace-meal" title="Not interested">🚫️</button> -->
     {% if is_fave %}
-    <button onclick="remove_from_favorites(this, '{{meal.uri}}')" id="save-favorites" title="Remove from favorites">💔</button>
+    <button onclick="remove_from_favorites(this, '{{meal.uri}}')" class="save-favorites" title="Remove from favorites">💔</button>
     {% else %}
-    <button onclick="add_to_favorites(this, '{{meal.uri}}')" id="save-favorites" title="Save to favorites">❤️</button>
+    <button onclick="add_to_favorites(this, '{{meal.uri}}')" class="save-favorites" title="Save to favorites">❤️</button>
     {% endif %}
 </div>
 {% endmacro %}
