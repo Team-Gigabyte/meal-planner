@@ -29,7 +29,7 @@ emoji_regex = re.compile(r"[\U0001F600-\U0001F64F"  # Emoticons
 
 app = Flask(__name__)
 app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY") or "gig-trade-secrets"
-app_name = "Quotomeal"
+app_name = "GiG Meals"
 
 
 @app.route("/")
