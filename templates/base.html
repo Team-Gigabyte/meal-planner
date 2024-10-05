@@ -14,6 +14,24 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="The best meal planner for diabetics.">
+    <meta name="keywords" content="meal planner, recipes, dietary preferences, favorites">
+    <meta name="author" content="Team Gigabyte">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="{% if title %}{{title}} — {{app_name}}{% else %}{{app_name}}{% endif %}">
+    <meta property="og:description" content="The best meal planner for diabetics.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ request.url }}">
+    <meta property="og:site_name" content="{{app_name}}">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="{% if title %}{{title}} — {{app_name}}{% else %}{{app_name}}{% endif %}">
+    <meta name="twitter:description" content="The best meal planner for diabetics.">
+
 </head>
 
 <body>
